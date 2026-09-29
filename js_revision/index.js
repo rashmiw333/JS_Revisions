@@ -1,54 +1,67 @@
-// 1. Weekly water goal
-const weeklyWaterGoal = 14;
+// 1. What is the output?
 
-// 2. Water consumed each day
-const mondayWater = 1.5;
-const tuesdayWater = 2;
-const wednesdayWater = 1.8;
-const thursdayWater = 1.2;
-const fridayWater = 2.5;
-const saturdayWater = 2;
-const sundayWater = 1.7;
+//console.log(5 == "5");//true
+//console.log(5 === "5");//false
 
-// 3. Calculate total water consumed
-const totalWaterConsumed =
-  mondayWater +
-  tuesdayWater +
-  wednesdayWater +
-  thursdayWater +
-  fridayWater +
-  saturdayWater +
-  sundayWater;
 
-// 4. Calculate remaining water goal
-const remainingWaterGoal =
-  weeklyWaterGoal - totalWaterConsumed;
+// 1. What is the output?
 
-// 5. Determine water consumption status
-let waterStatus;
+//console.log(10 % 3); //1
 
-if (remainingWaterGoal < 0) {
-  waterStatus =
-    "You have exceeded your water consumption goal for the week!";
-} else if (remainingWaterGoal < 1) {
-  waterStatus =
-    "You are close to reaching your water goal. Keep hydrating!";
-} else if (remainingWaterGoal < 2) {
-  waterStatus =
-    "You are doing well, but aim to reach your water goal by the end of the week.";
+
+// 1. What is the output?
+
+let age= 20;
+
+if (age > 18) {
+//console.log("Adult"); //Adult
 } else {
-  waterStatus =
-    "You are on track with your water consumption goal.";
+//console.log("Minor");
 }
 
-// 6. Generate the report
-const waterReport =
-  "Weekly Water Consumption Report\n" +
-  "--------------------------------\n\n" +
-  "Weekly Water Goal: " + weeklyWaterGoal + " litres\n" +
-  "Total Water Consumed: " + totalWaterConsumed + " litres\n" +
-  "Remaining Water Consumption: " + remainingWaterGoal + " litres\n\n" +
-  "Water Status: " + waterStatus;
 
-// Print the report
-console.log(waterReport);
+// 1. What is the output?
+
+if (0) {
+//console.log("Hello");
+}else {
+//console.log("World"); //world
+}
+
+
+// 1. What is the output?
+
+if ("0") {
+// console.log("Yes");//Yes
+} else {
+// console.log("No");
+}
+
+
+
+
+// 1. Predict the output.
+
+// console.log(true && false); //false
+// console.log(true || false); //true
+// console.log(!true); //false
+
+
+// 1. Predict the output.
+
+
+//console.log(5>3 && 8>10); //false
+
+
+// 1. Predict the output.
+
+//console.log(false || "Hello"); //Hello
+
+
+// 1. What is the output?
+
+let a=5;
+
+if (a=5) {
+  //console.log("Inside"); //Inside
+}
