@@ -1,58 +1,113 @@
-// **Solve the following 2 questions in 20 mins:**
+const products = [
+  { name: "Smartphone", category: "Electronics", retailSales: 20000, onlineSales: 35000, wholesaleSales: 15000 },
+  { name: "T-Shirt", category: "Clothing", retailSales: 8000, onlineSales: 12000, wholesaleSales: 5000 },
+  { name: "Sofa", category: "Furniture", retailSales: 25000, onlineSales: 10000, wholesaleSales: 30000 },
+  { name: "Laptop", category: "Electronics", retailSales: 40000, onlineSales: 50000, wholesaleSales: 20000 },
+  { name: "Jeans", category: "Clothing", retailSales: 10000, onlineSales: 15000, wholesaleSales: 7000 },
+  { name: "Bed", category: "Furniture", retailSales: 30000, onlineSales: 12000, wholesaleSales: 20000 },
+  { name: "Headphones", category: "Electronics", retailSales: 15000, onlineSales: 18000, wholesaleSales: 9000 },
+  { name: "Jacket", category: "Clothing", retailSales: 12000, onlineSales: 17000, wholesaleSales: 6000 }
+];
 
-// 1. Create a function that takes three arguments: **`customerAge`**, **`isMember`**, and **`totalPurchase`**. 
-// Inside the function, determine eligibility for a discount based on the following criteria:
-    
-//     To be eligible for the discount, the customer must meet either **one** of the following conditions:
-    
-//     - The **`customerAge`** must be less than 18 or greater than 60, and the **`totalPurchase`** must be greater than or equal to 100.
-        
-//         OR
-        
-//     - The customer must be a member (**`isMember`** is `true`) and their **`totalPurchase`** must be greater than or equal to 50.
-    
-//     Return "Eligible for Discount" if the customer meets the criteria, otherwise return "Not Eligible for Discount".
-    
-//     Call the function with the following test cases and display the output to the console:
-    
-//     - **`customerAge`** as 16, **`isMember`** as `false`, and **`totalPurchase`** as 120.
-//     - **`customerAge`** as 45, **`isMember`** as `false`, and **`totalPurchase`** as 40.
 
-function determineEligibilty(customerAge,isMember,totalPurchase){
+// 1. Add totalSales to every product
 
-    if(((customerAge<18 || customerAge>60) && totalPurchase >=100)|| isMember){
-        return "Eligible for Discount"
-    }else{
-        return "Not Eligible for Discount"
+products.forEach(product => {
+
+  product.totalSales =
+    product.retailSales +
+    product.onlineSales +
+    product.wholesaleSales;
+
+});
+
+
+// 2. Find the product with highest totalSales
+
+const mostProfitableProduct = products.reduce(
+  (highest, product) => {
+
+    if (product.totalSales > highest.totalSales) {
+      return product;
     }
-}
 
-console.log("Eligibility: ",determineEligibilty(16,false,120));
+    return highest;
+  }
+);
 
-console.log("Eligibiity of Member: ",determineEligibilty(45,false,40) );
 
-// 1. Create a function that takes two arguments: **`monthlySales`** and **`isTeamLeader`**.
-//  Inside the function, determine eligibility for a bonus based on the following criteria:
-    
-//     To be eligible for a bonus, the employee must meet **all** the following conditions:
-    
-//     - The **`monthlySales`** must be greater than or equal to 5000.
-//     - The employee must be a team leader (**`isTeamLeader`** is `true`).
-    
-//     Return `true` if the employee meets the criteria, otherwise return `false`.
-    
-//     Call the function with the following test cases and display the output to the console:
-    
-//     - **`monthlySales`** as 7000 and **`isTeamLeader`** as `true`.
-//     - **`monthlySales`** as 4000 and **`isTeamLeader`** as `true`.
+// 3. Calculate total sales of all products
 
-function bonusEligibility(monthlySales,isTeamLeader){
-    if(monthlySales>=5000 && isTeamLeader){
-        return true;
-    }
-    return false;
+const totalSalesOfAllProducts = products.reduce(
+  (total, product) => total + product.totalSales,
+  0
+);
 
-}
 
-console.log("Bonus Eligibility: ",bonusEligibility(7000,true));
-console.log("Bonus Eligibility: ",bonusEligibility(4000,true));
+// 4. Calculate average sales
+
+const averageSalesOfAllProducts =
+  totalSalesOfAllProducts / products.length;
+
+
+// 5. Calculate total retail sales
+
+const totalRetailSales = products.reduce(
+  (total, product) => total + product.retailSales,
+  0
+);
+
+
+// 6. Calculate total online sales
+
+const totalOnlineSales = products.reduce(
+  (total, product) => total + product.onlineSales,
+  0
+);
+
+
+// 7. Calculate total wholesale sales
+
+const totalWholesaleSales = products.reduce(
+  (total, product) => total + product.wholesaleSales,
+  0
+);
+
+
+// 8. Calculate averages
+
+const averageRetailSales =
+  totalRetailSales / products.length;
+
+const averageOnlineSales =
+  totalOnlineSales / products.length;
+
+const averageWholesaleSales =
+  totalWholesaleSales / products.length;
+
+
+// 9. Generate Sales Report
+
+const salesReport =
+  "====== Sales Report =====\n\n" +
+
+  "Most Profitable Product\n" +
+  "------\n" +
+
+  "Name: " + mostProfitableProduct.name + "\n" +
+  "Category: " + mostProfitableProduct.category + "\n" +
+  "Total Sales: " + mostProfitableProduct.totalSales + "\n\n" +
+
+  "Sales Average\n" +
+  "------\n" +
+
+  "Total Sales of All Products: " + totalSalesOfAllProducts + "\n" +
+  "Average Sales of All Products: " + averageSalesOfAllProducts + "\n" +
+  "Average Retail Sales: " + averageRetailSales + "\n" +
+  "Average Online Sales: " + averageOnlineSales + "\n" +
+  "Average Wholesale Sales: " + averageWholesaleSales;
+
+
+// 10. Print report
+
+console.log(salesReport);
